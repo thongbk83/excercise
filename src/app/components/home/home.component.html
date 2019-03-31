@@ -1,0 +1,58 @@
+<div
+    class="mt-3 col-md-10 col-sm-12 col-lg-10 mx-auto"
+    *ngIf="listCharacter"
+>
+
+    <div class="bmd-form-group bmd-collapse-inline pull-xs-right">
+        <button
+            class="btn bmd-btn-icon"
+            for="search"
+            (click)=onClickSearchButton()
+        >
+            <i class="material-icons">search</i>
+        </button>
+
+        <input
+            class="form-control"
+            type="text"
+            id="search"
+            placeholder="Enter your keyword..."
+            (keydown)="onKeydownForSearching($event)"
+            [(ngModel)]="keyword"
+        >
+
+    </div>
+
+    <table
+        class="mt-3"
+        infiniteScroll
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50"
+        (scrolled)="onScroll()"
+    >
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let character of listCharacter">
+                <td>{{ character.name }}</td>
+                <td>
+                    {{ character.description ? character.description : 'no description for this character' | slice : 0 : 100}}
+                </td>
+                <td>
+                    <a [routerLink]="['character',character.id]">
+                        <img
+                            class="img-responsive thumbnail"
+                            src="{{character.thumbnail.path}}.jpg"
+                        >
+
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
