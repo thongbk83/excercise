@@ -7,6 +7,8 @@ import {
   tick
 } from "@angular/core/testing";
 
+import { FormsModule } from "@angular/forms";
+
 import { RouterTestingModule } from "@angular/router/testing";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { InfiniteScrollModule } from "ngx-infinite-scroll";
@@ -65,7 +67,8 @@ describe("HomeComponent", () => {
       imports: [
         RouterTestingModule,
         HttpClientTestingModule,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        FormsModule
       ]
     }).compileComponents();
 
