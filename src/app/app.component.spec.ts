@@ -19,7 +19,7 @@ describe("AppComponent", () => {
   it(`should have as title 'marvel-thongphan'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual("marvel-thongphan1");
+    expect(app.title).toEqual("marvel-thongphan");
   });
 
   it("should render title in a h1 tag", () => {
