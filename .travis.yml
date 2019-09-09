@@ -1,35 +1,39 @@
-sudo: required
-addons:
-  chrome: stable
-
-dist: xenial
-
+os:
+  - linux
 services:
-  - xvfb
-
+  - docker
 language: node_js
 node_js:
-  - "10.15.3"
-
+  - "10"
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+cache:
+  yarn: true
+  directories:
+    - $HOME/.yarn-cache
+    - node_modules
 branches:
   only:
     - master
-
-before_script:
+before_install:
+  - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
-  - npm install -g @angular/cli
-
+  - sh -e /etc/init.d/xvfb start
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
+  - yarn global add @angular/cli
+install:
+  - yarn install
 script:
-  - ng build --prod --aot
-  - ng test
-
-env:
-  - YARN_GPG=no
-
-deploy:
-  provider: heroku
-  api_key:
-    secure: 668020fb-9b06-4319-b94c-7e73dfcefb83
-  app: thong-automation-heroku
-  on:
-    repo: thongbk83/excercise
+  - ng test ng-busy --watch=false
+  - ng build ng-busy --prod
+#  - ng test angular-opensource --watch=false
+notifications:
+  webhooks:
+    on_success: change
+    on_failure: always
+    on_start: false
