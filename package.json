@@ -24,7 +24,7 @@
     "bootstrap-material-design-icons": "^2.2.0",
     "core-js": "^2.6.9",
     "express": "^4.17.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ngx-infinite-scroll": "^7.2.0",
     "path": "^0.12.7",
     "rxjs": "~6.5.2",
