@@ -23,7 +23,7 @@
     "@angular/router": "^8.2.4",
     "bootstrap-material-design-icons": "^2.2.0",
     "core-js": "^2.6.9",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "jquery": "^3.4.1",
     "ngx-infinite-scroll": "^7.2.0",
     "path": "^0.12.7",
